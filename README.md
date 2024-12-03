@@ -1,6 +1,6 @@
 # AOC_2024
 
-This repository contains day by day update for [AOC(Advent of Coding)] (https://adventofcode.com/) for the year of 2024.
+This repository contains day by day update for [AOC(Advent of Coding)](https://adventofcode.com/) for the year of 2024.
 
 To run, clone the repository with:
 

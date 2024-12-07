@@ -1,40 +1,28 @@
-def in_boundary(x, y, rows, cols):
-    return 0 <= x < rows and 0 <= y < cols
-
-def part1(grid):
-    rows, cols = len(grid), len(grid[0])
-    gp = (0, 0)
-    guard = 0
-
-    directions = {
-        0: (-1, 0),
-        1: (0, 1),
-        2: (1, 0),
-        3: (0, -1)
-    }
-
-    # Guard position
-    for i in range(rows):
-        if '^' in grid[i]:
-            gp = (i, grid[i].index('^'))
-            break
-    
-    count = 1
-    visited = set()
-    visited.add(gp)
-
-    while True:
-        nx, ny = gp[0] + directions[guard][0], gp[1] + directions[guard][1]
-
-        if not in_boundary(nx, ny, rows, cols):
-            return count
-        
-        if grid[nx][ny] == '.':
-            gp = (nx, ny)
-            if gp not in visited:
-                visited.add(gp)
-                count += 1
-        elif grid[nx][ny] == '#':
-            guard = (guard + 1) % 4
+from itertools import product
+def calculate(numbers, ops):
+    result =numbers[0]
+    for i in range(1, len(numbers)):
+        if ops[i-1] == '+':
+            result += numbers[i]
+        elif ops[i-1] == '*':
+            result *= numbers[i]
         else:
-            gp = (nx, ny)
+            result = int(str(result) + str(numbers[i]))
+    return result
+
+def verify(op_string, numbers, test):
+    ops = product(op_string, repeat=len(numbers)-1)
+
+    for o in ops:
+        if calculate(numbers, o) == test:
+            return True
+    return False
+
+def part1(input):
+    count = 0
+    for i in input:
+        test_value, numbers = int(i.split(': ')[0]), [int(x) for x in i.split(': ')[1].split(' ')]
+
+        if verify('+*', numbers, test_value):
+            count += test_value
+    return count

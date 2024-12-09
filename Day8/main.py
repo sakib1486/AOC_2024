@@ -6,6 +6,8 @@ def main():
     input = fp.readlines()
     fp.close()
 
+    input = [x.strip() for x in input]
+
     p1_ans = part1(input)
     print(f"Part 1 answer: {p1_ans}")
     p2_ans = part2(input)

@@ -1,4 +1,10 @@
+from helpers import *
 def part1(input):
-    count = 0
+    count = set()
+    rows, cols = len(input), len(input[0])
     
-    return count
+    antennas = create_antenna_map(input, rows, cols)
+    
+    for i in antennas:
+        count = count.union(count_unique_antinodes(input, antennas[i], 1))
+    return len(count)

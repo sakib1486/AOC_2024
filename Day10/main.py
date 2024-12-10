@@ -1,11 +1,16 @@
 from part1 import part1
 from part2 import part2
+from helpers import parse_input
 def main():
     fp = open('input.txt', 'r')
     input = fp.readlines()
+    fp.close()
 
+    input = parse_input(input)
 
+    # part1
     p1_ans = part1(input)
+
     p2_ans = part2(input)
 
     print(f"part 1 answer: {p1_ans}")

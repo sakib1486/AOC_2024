@@ -3,8 +3,8 @@ from part2 import part2
 
 def main():
     fp = open('input.txt', 'r')
-
     input = fp.readlines()
+    fp.close()
 
     p1_ans = part1(input)
     p2_ans = part2(input)

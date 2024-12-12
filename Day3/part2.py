@@ -6,7 +6,7 @@ def part2(input):
 
   combined = f"{mul_pattern}|{control_pattern}"
   enabled = True
-  for i in input:
+  for i in input: 
     tokens = re.finditer(combined, i)
     for token in tokens:
         if token.group(0) == "do()":
@@ -17,4 +17,5 @@ def part2(input):
           if enabled:
             x,y = int(token.group(1)), int(token.group(2))
             total_sum += x*y
+
   return total_sum

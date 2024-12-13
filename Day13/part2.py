@@ -1,6 +1,4 @@
 from helpers import *
 
-def part2(input):
-    cost = 0
-
-    return cost
+def part2(machines):
+    return solve(machines, 10000000000000) # offset 10000000000000 for part2
